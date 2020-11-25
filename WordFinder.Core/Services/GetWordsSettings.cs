@@ -1,4 +1,4 @@
-﻿namespace WordFinder.Services
+﻿namespace WordFinder.Core.Services
 {
     public class GetWordsSettings
     {

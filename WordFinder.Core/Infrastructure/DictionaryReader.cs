@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace WordFinder.Infrastructure
+namespace WordFinder.Core.Infrastructure
 {
     public class DictionaryReader : IDictionaryReader
     {
@@ -14,9 +13,9 @@ namespace WordFinder.Infrastructure
             this.filepath = filepath;
         }
 
-        public async Task<IEnumerable<string>> ReadAsync()
+        public IEnumerable<string> Read()
         {
-            string[] words = await File.ReadAllLinesAsync(filepath);
+            string[] words = File.ReadAllLines(filepath);
 
             return words.Select(w => w.ToLower());
         }

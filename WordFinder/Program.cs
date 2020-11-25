@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using WordFinder.Infrastructure;
-using WordFinder.Services;
+using WordFinder.Core.Infrastructure;
+using WordFinder.Core.Services;
 
 namespace WordFinder
 {
@@ -11,7 +10,7 @@ namespace WordFinder
     {
         const string DictionaryPath = @"Resources\ukenglish.txt";
 
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             int minimumWordLength = GetMinimumWordLength();
 
@@ -26,7 +25,7 @@ namespace WordFinder
                 Console.Write("Enter letters: ");
                 string letters = Console.ReadLine().ToLower();
 
-                IEnumerable<IGrouping<int, string>> wordGroups = await getWords.GetAsync(letters);
+                IEnumerable<IGrouping<int, string>> wordGroups = getWords.Get(letters);
 
                 if (wordGroups.Any())
                 {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WordFinder.Infrastructure;
+using WordFinder.Core.Infrastructure;
 
-namespace WordFinder.Services
+namespace WordFinder.Core.Services
 {
     public class GetWordsService : IGetWordsService
     {
@@ -16,9 +16,9 @@ namespace WordFinder.Services
             this.settings = settings;
         }
 
-        public async Task<IEnumerable<IGrouping<int, string>>> GetAsync(string letters)
+        public IEnumerable<IGrouping<int, string>> Get(string letters)
         {
-            var dictionaryWords = await dictionaryReader.ReadAsync();
+            var dictionaryWords = dictionaryReader.Read();
 
             return dictionaryWords
                 .AsParallel()

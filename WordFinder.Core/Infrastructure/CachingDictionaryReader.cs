@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace WordFinder.Infrastructure
+namespace WordFinder.Core.Infrastructure
 {
     public class CachingDictionaryReader : IDictionaryReader
     {
@@ -13,9 +12,9 @@ namespace WordFinder.Infrastructure
             this.innerReader = innerReader;
         }
 
-        public async Task<IEnumerable<string>> ReadAsync()
+        public IEnumerable<string> Read()
         {
-            this.dictionary = this.dictionary ?? await this.innerReader.ReadAsync();
+            this.dictionary = this.dictionary ?? this.innerReader.Read();
             return this.dictionary;
         }
     }
